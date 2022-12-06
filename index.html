@@ -3,13 +3,13 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Yorktown Colors</title>
+  <title>Studio Yorktown Color Town Hall</title>
   <link href="https://rsms.me/inter/inter.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
 
   <style>
     :root {
-      --bg: #d9cbbe;
+      --bg: #ece3d0;
       font-weight: 200;
       background: var(--bg);
       font-family: Inter, sans-serif;
@@ -18,6 +18,17 @@
 
     body {
       padding: 0 3rem;
+    }
+
+    a {
+      font-weight: 500;
+      color: #D83715;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+      text-decoration-color: #202125;
     }
 
     .app {
@@ -126,7 +137,7 @@
       transform: translateY(0.5em);
     }
 
-    .palettes__head>* {
+    .palettes__head > * {
       opacity: 0;
       display: block;
       width: 100%;
@@ -181,6 +192,11 @@
       text-transform: uppercase;
     }
 
+
+    .palettes__palette--many .palettes__data {
+      font-size: 0.6em;
+    }
+
     .palettes__data strong {
       position: relative;
       display: inline-block;
@@ -214,16 +230,16 @@
 <body>
   <main class="app" data-app>
     <article class="app__header">
-      <h1>Studio Yorktown Color Library</h1>
+      <h1>Studio Yorktown Color Town Hall</h1>
       <div class="app__lr">
-        <p>A collection of carefully crafted color palettes.
-          My symphony of hues and shades
-          Each one balanced to please your eyes.
-          A blending of warm and cool tones. A spectrum of vibrant and subtle shades,
-          Each palette a unique expression
-          Of my artistic vision and creativity
-          A treasure trove of color to inspire
-          And bring beauty to any design.</p>
+        <p>A vibrant yet versatile library of color palettes, perfect for adding a engaging color to your designs and artwork. 
+          Created and collected over several years, these palettes are designed to inspire creativity and help you make your visuals pop.
+           Whether you're looking for a bold and brilliant palette, or a more elegant and easy-on-the eye color scheme,
+            this regularly updated library is sure to have something for everyone.
+            
+            Palettes created and maintained by <a href="https://twitter.com/studioyorktown">Studio Yorktown / @studioyorktown</a>.
+            
+            Adapted from <a href="https://github.com/meodai/palette-aldente">'Palette Aldente'</a> by <a href="https://twitter.com/meodai">@meodai</a></p>
         <div class="canvas">
           <canvas data-viz width="400" height="400">
           </canvas>
@@ -300,7 +316,7 @@
 
     const $wrap = document.querySelector('[data-colors]');
 
-    const palettes = colorPalettes.palettesFlat;
+    const palettes = colorPalettes.palettesFlat.sort((c1, c2) => c1.colors.length - c2.colors.length);
 
     const $app = document.querySelector('[data-app]');
 
@@ -319,6 +335,10 @@
         $wrapBaby.style.setProperty('--colors-scaled',
           chroma.scale(palette.colors.map(c => c.value)).mode('lch').colors(40).join()
         );
+
+        if (palette.colors.length > 5) {
+          $wrapBaby.classList.add('palettes__palette--many');
+        }
 
 
         const $paletteTitle = document.createElement('h2');
