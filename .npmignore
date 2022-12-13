@@ -1,0 +1,4 @@
+src/ase/*
+dist/paletteFiles/*
+dist/img/*
+dist/*.svg
