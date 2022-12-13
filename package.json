@@ -1,6 +1,6 @@
 {
   "name": "coloryorktownhall",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Studio Yorktown Color library",
   "main": "dist/palettes.js",
   "type": "module",
